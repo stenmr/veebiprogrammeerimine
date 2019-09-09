@@ -48,5 +48,7 @@
             left: 0;
             padding: 2rem;'>" . $fullTimeNow . "</footer>";
         ?>
+
+        <hr>
     </body>
 </html>
