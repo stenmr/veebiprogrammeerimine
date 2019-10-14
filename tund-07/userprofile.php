@@ -22,6 +22,9 @@ $userName = $_SESSION["userFirstname"] . " " . $_SESSION["userLastname"];
 
 $notice = null;
 $myDescription = null;
+$currentPasswordError = null;
+$newPasswordError = null;
+$confirmNewPasswordError = null;
 
 if (isset($_POST["submitProfile"])) {
     $notice = storeuserprofiles($_POST["description"], $_POST["bgcolor"], $_POST["txtcolor"]);
@@ -58,6 +61,15 @@ require("header.php");
         <label>Minu valitud taustavärv: </label><input name="bgcolor" type="color" value="<?php echo $_SESSION["bgColor"]; ?>"><br>
         <label>Minu valitud tekstivärv: </label><input name="txtcolor" type="color" value="<?php echo $_SESSION["txtColor"]; ?>"><br>
         <input name="submitProfile" type="submit" value="Salvesta profiil"><span><?php echo $notice; ?></span>
+    </form>
+    <br>
+    <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
+        <label>Praegune salasõna:</label><br>
+        <input name="currentpassword" type="password"><span><?php echo $currentPasswordError; ?></span><br>
+        <label>Uus salasõna (min 8 tähemärki):</label><br>
+        <input name="newpassword" type="password"><span><?php echo $newPasswordError; ?></span><br>
+        <label>Korrake uut salasõna:</label><br>
+        <input name="confirmnewpassword" type="password"><span><?php echo $confirmNewPasswordError; ?></span><br>
     </form>
 
 </body>
